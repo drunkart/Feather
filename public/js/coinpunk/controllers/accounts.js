@@ -26,7 +26,7 @@ this function will be responsible to check if any account exists
 for the given email on onename.io
 ---------------------------------------------------*/
 
-coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
+/*coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
     var onename = new coinpunk.Wallet();
     if (onename.searchEmail(email))
     {
@@ -35,7 +35,7 @@ coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
     else {
         return false;
     }
-}
+}*/
 
 coinpunk.controllers.Accounts.prototype.signin = function() {
   var self = this;
