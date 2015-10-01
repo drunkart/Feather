@@ -62,7 +62,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
     keyPairs.push(newKeyPair);
     return newKeyPair.address;
   };
-  
+
   this.removeAddress = function(address) {
     var i=0;
     for(i=0;i<keyPairs.length;i++)
@@ -92,7 +92,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
     }
     return addrs;
   };
-  
+
   this.deleteChangeAddress = function() {
     var newKeyPairs = [];
     for(var i=0; i<keyPairs.length; i++) {
@@ -377,7 +377,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
 
     // Remove unspent elements now that we have a tx that uses them.
     this.unspent = _.difference(this.unspent, tx.unspentsUsed);
-    
+
     // Keep track of the transactions we just used, in case we need
     // to rollback the spend.
     this.lastUnspentsUsed = tx.unspentsUsed;
@@ -391,6 +391,16 @@ coinpunk.Wallet = function(walletKey, walletId) {
     for(i=0;i<this.lastUnspentsUsed.length;i++)
       this.unspent.push(this.lastUnspentsUsed[i])
     // keyPairs.pop(); might be unsafe, not doing for now
+  };
+
+  this.searchEmail = function() {
+    var onename = new Bitcoin.Onename();
+    if (onename.FindEmail(email)) {
+        return true;
+    }
+    else {
+        return false;
+    }
   };
 
   if(walletKey && walletId)
