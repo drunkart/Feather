@@ -34,7 +34,8 @@
     "grunt-contrib-uglify": "~0.2.7",
     "grunt-contrib-watch": "~0.5.3",
     "browserify": "3.19.1",
-    "uglify-js": "2.4.8"
+    "uglify-js": "2.4.8",
+    "onename-api": "1.0.1"
   },
   "scripts": {
     "test": "NODE_ENV=test istanbul test ./node_modules/.bin/_mocha -- --reporter list test/coinpunk/*",
