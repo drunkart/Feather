@@ -26,7 +26,7 @@ this function will be responsible to check if any account exists
 for the given email on onename.io
 ---------------------------------------------------*/
 
-/*coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
+coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
     var onename = new coinpunk.Wallet();
     if (onename.searchEmail(email))
     {
@@ -35,7 +35,7 @@ for the given email on onename.io
     else {
         return false;
     }
-}*/
+}
 
 coinpunk.controllers.Accounts.prototype.signin = function() {
   var self = this;
@@ -109,8 +109,8 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.');
 
-    /*if((/.+@.+\..+/.exec(email) !== null) && this.emailSearch(email))
-      errors.push('Email already exists.');*/
+    if((/.+@.+\..+/.exec(email) !== null) && this.emailSearch(email))
+      errors.push('Email already exists.');
 
   if(password === '')
     errors.push('Password cannot be blank.')
