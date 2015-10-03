@@ -393,16 +393,6 @@ coinpunk.Wallet = function(walletKey, walletId) {
     // keyPairs.pop(); might be unsafe, not doing for now
   };
 
-  this.searchEmail = function() {
-    var onename = new Bitcoin.Onename();
-    if (onename.FindEmail(email)) {
-        return true;
-    }
-    else {
-        return false;
-    }
-  };
-
   if(walletKey && walletId)
     this.createServerKey();
 };

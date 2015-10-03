@@ -27,14 +27,7 @@ for the given email on onename.io
 ---------------------------------------------------*/
 
 coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
-    var onename = new coinpunk.Wallet();
-    if (onename.searchEmail(email))
-    {
-        return true;
-    }
-    else {
-        return false;
-    }
+    console.log("Hello")
 }
 
 coinpunk.controllers.Accounts.prototype.signin = function() {
