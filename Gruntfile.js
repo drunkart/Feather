@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         options: {
           stdout: true
         },
-        command: grunt.option('target') === 'dev' 
+        command: grunt.option('target') === 'dev'
                 ? './node_modules/browserify/bin/cmd.js -r ./lib/bitcoinjs/index.js > public/js/lib/bitcoinjs.js'
                 : './node_modules/browserify/bin/cmd.js -r ./lib/bitcoinjs/index.js | ./node_modules/.bin/uglifyjs  > public/js/lib/bitcoinjs.js'
       },
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
         options: {
           stdout: true
         },
-        command: grunt.option('target') === 'dev' 
+        command: grunt.option('target') === 'dev'
           ? 'cat public/css/bootstrap.css public/css/font-awesome.css public/css/fonts.css > public/css/all.css'
           : 'cat public/css/bootstrap.css public/css/font-awesome.css public/css/fonts.css | ./node_modules/.bin/cleancss -o public/css/all.css'
       }
@@ -66,6 +66,7 @@ module.exports = function(grunt) {
             'public/js/coinpunk/template.js',
             'public/js/coinpunk/models/database.js',
             'public/js/coinpunk/models/wallet.js',
+            'public/js/coinpunk/models/onename.js',
             'public/js/coinpunk/controller.js',
             'public/js/coinpunk/controllers/accounts.js',
             'public/js/coinpunk/controllers/addresses.js',
