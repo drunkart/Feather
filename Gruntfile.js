@@ -10,7 +10,7 @@ module.exports = function(grunt) {
           stdout: true
         },
         command: grunt.option('target') === 'dev'
-                ? './node_modules/browserify/bin/cmd.js -r ./lib/bitcoinjs/index.js > public/js/lib/bitcoinjs.js'
+                ? './node_modules/browserify/bin/cmd.js -r ./lib/bitcoinjs/index.js > public/js/lib/bitcoinjs.js | ./node_modules/browserify/bin/cmd.js -r ./lib/onenamejs/index.js > public/js/lib/onename.js'
                 : './node_modules/browserify/bin/cmd.js -r ./lib/bitcoinjs/index.js | ./node_modules/.bin/uglifyjs  > public/js/lib/bitcoinjs.js'
       },
       minifycss: {
@@ -94,6 +94,16 @@ module.exports = function(grunt) {
         },
       },
     },
+    required: {
+        libs: {
+          options: {
+            // npm install missing modules
+            install: true
+          },
+          // Search for require() in all js files in the src folder
+          src: ['lib/coinpunk/controllers/*.js']
+        }
+    }
   });
 /*
   grunt.event.on('watch', function(action, filepath) {
@@ -101,4 +111,6 @@ module.exports = function(grunt) {
   });
 */
   grunt.registerTask('default', ['shell', 'uglify']);
+  grunt.loadNpmTasks('grunt-required');
+  grunt.loadNpmTasks('grunt-browserify');
 };
