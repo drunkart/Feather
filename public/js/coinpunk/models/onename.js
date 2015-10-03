@@ -1,4 +1,4 @@
-var onenameAPI = require('onename.js');
+var onenameAPI = require('Test');
 coinpunk.Onename = function() {
 	/*var onenameAPI = new OnenameAPI.Test();
 	onenameAPI.hello();*/
