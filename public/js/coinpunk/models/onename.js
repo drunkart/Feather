@@ -5,4 +5,9 @@ coinpunk.Onename = function() {
 	this.hello = function(email) {
 		Client.hello(email)
 	};
+
+	this.findEmail = function(email) {
+		var usernames = [email]
+		return Client.emailSearch(usernames)
+	};
 };

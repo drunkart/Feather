@@ -28,7 +28,10 @@ for the given email on onename.io
 
 coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
     var onename = new coinpunk.Onename();
-    onename.hello(email);
+    if (onename.findEmail(email))
+        return true
+    else
+        return false
 }
 
 coinpunk.controllers.Accounts.prototype.signin = function() {
@@ -100,10 +103,10 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   var passwordConfirm = $('#password_confirm').val();
   var errors = [];
 
-  if(/.+@.+\..+/.exec(email) === null)
-    errors.push('Email is not valid.');
+  /*if(/.+@.+\..+/.exec(email) === null)
+    errors.push('Email is not valid.');*/
 
-    if((/.+@.+\..+/.exec(email) !== null) && this.emailSearch(email))
+  if(/*(/.+@.+\..+/.exec(email) !== null) && */this.emailSearch(email))
       errors.push('Email already exists.');
 
   if(password === '')
