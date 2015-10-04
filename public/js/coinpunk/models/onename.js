@@ -8,11 +8,8 @@ coinpunk.Onename = function() {
 
 	this.findEmail = function(email) {
 		var username = email
-		/*Client.searchUsers('wenger', function(err, data) {
+		Client.searchUsers('wenger', function(err, data) {
 			console.log("Data %s", data)
-		})*/
-		Client.emailSearch('wenger', function(err, data){
-			console.log(data)
 		})
 	};
 };
