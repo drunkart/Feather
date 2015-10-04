@@ -1,8 +1,7 @@
 coinpunk.Onename = function() {
-	/*var onenameAPI = new OnenameAPI.Test();
-	onenameAPI.hello();*/
-	this.hello = function() {
+	var onenameAPI = new OnenameAPI();
+	/*this.hello = function() {
 		console.log("Hello world");
 		return;
-	};
+	};*/
 };
