@@ -28,7 +28,6 @@ for the given email on onename.io
 
 coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
     var onename = new coinpunk.Onename();
-    onename.hello();
 }
 
 coinpunk.controllers.Accounts.prototype.signin = function() {
