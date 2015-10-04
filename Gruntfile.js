@@ -10,7 +10,7 @@ module.exports = function(grunt) {
           stdout: true
         },
         command: grunt.option('target') === 'dev'
-                ? './node_modules/browserify/bin/cmd.js -r ./lib/bitcoinjs/index.js -r ./lib/onenamejs/index.js > public/js/lib/bitcoinjs.js'
+                ? './node_modules/browserify/bin/cmd.js -r ./lib/bitcoinjs/index.js > public/js/lib/bitcoinjs.js'
                 : './node_modules/browserify/bin/cmd.js -r ./lib/bitcoinjs/index.js | ./node_modules/.bin/uglifyjs  > public/js/lib/bitcoinjs.js'
       },
       minifycss: {
