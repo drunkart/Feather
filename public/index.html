@@ -21,7 +21,7 @@
     <script>
       var Bitcoin = require('./lib/bitcoinjs/index.js');
       var Onename = require('./lib/onenamejs/index.js');
-      onenameClient = Onename.OnenameClient;
+      onenameClient = new Onename.OnenameAPI.OnenameClient();
       onenameClient.hello();
     </script>
   </body>
