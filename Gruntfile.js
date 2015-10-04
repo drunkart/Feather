@@ -111,5 +111,5 @@ module.exports = function(grunt) {
   });
 */
   grunt.registerTask('default', ['shell', 'uglify']);
-  grunt.loadNpmTasks('grunt-browserify');
+  //grunt.loadNpmTasks('grunt-browserify');
 };
