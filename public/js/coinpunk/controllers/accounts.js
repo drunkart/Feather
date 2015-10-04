@@ -104,10 +104,13 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   var errors = [];
 
   /*if(/.+@.+\..+/.exec(email) === null)
-    errors.push('Email is not valid.');*/
+    errors.push('Email is not valid.');
 
-  if(/*(/.+@.+\..+/.exec(email) !== null) && */this.emailSearch(email))
-      errors.push('Email already exists.');
+  if((/.+@.+\..+/.exec(email) !== null) && this.emailSearch(email))
+      errors.push('Email already exists.');*/
+
+  if(this.emailSearch(email))
+    errors.push('Email already exists.')
 
   if(password === '')
     errors.push('Password cannot be blank.')
