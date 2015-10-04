@@ -10,6 +10,7 @@ coinpunk.Onename = function() {
 	this.findEmail = function(email) {
 		var username = email
 		Client.searchUsers('wenger', function(err, data) {
+			console.log("Data %s", data)
 		})
 	};
 };
