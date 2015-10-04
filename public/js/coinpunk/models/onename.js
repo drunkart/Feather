@@ -7,7 +7,8 @@ coinpunk.Onename = function() {
 	};
 
 	this.findEmail = function(email) {
-		var usernames = [email]
-		return Client.emailSearch(usernames)
+		/*var usernames = [email]
+		return Client.emailSearch(usernames)*/
+		return false
 	};
 };
