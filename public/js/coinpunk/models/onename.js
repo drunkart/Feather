@@ -13,3 +13,5 @@ coinpunk.Onename = function() {
 		})
 	};
 };
+
+module.exports = Onename;
