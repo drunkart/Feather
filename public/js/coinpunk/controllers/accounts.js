@@ -29,13 +29,11 @@ for the given email on onename.io
 coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
     var body = {email: email};
     $.get('/api/Onename/searchUser', body, function(response) {
-        if(response.result == 'error') {
-          errorDiv.removeClass('hidden');
-          errorDiv.text(response.message);
-        }
-        else {
-            console.log(response);
-        }
+        console.log(response.result.emailExists)
+        if(response.result.emailExists == true)
+            return true
+        else
+            return false
     })
 }
 
