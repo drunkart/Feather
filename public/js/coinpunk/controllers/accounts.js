@@ -92,14 +92,10 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.');
 
-    /*-------------------------------------------------
-    This function will be called after email is entered
-    this function will be responsible to check if any account exists
-    for the given email on onename.io
-    ---------------------------------------------------*/
+  var body = {email: email}
   $.get('/api/Onename/searchUser', body, function(response) {
       if(response.emailExists)
-      errors.push('Email already exists.')
+        errors.push('Email already exists.')
   })
 
   if(password === '')
