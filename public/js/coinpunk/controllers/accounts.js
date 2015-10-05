@@ -20,33 +20,6 @@ coinpunk.controllers.Accounts.prototype.passwordStrength = {
   }
 }
 
-/*-------------------------------------------------
-This function will be called after email is entered
-this function will be responsible to check if any account exists
-for the given email on onename.io
----------------------------------------------------*/
-
-coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
-    var body = {email: email},
-        that = this;
-    this.emailExists = null;
-    $.get('/api/Onename/searchUser', body, function(response) {
-        that.emailExists = response.emailExists
-        console.log(that.emailExists)
-    })
-    console.log(this.emailExists)
-    if (this.emailExists == true)
-    {
-        console.log("true")
-        return true
-    }
-    else
-    {
-        console.log("false")
-        return false
-    }
-}
-
 coinpunk.controllers.Accounts.prototype.signin = function() {
   var self = this;
   var id = $('#walletId').val();
@@ -119,8 +92,15 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.');
 
-  if(this.emailSearch(email))
-    errors.push('Email already exists.');
+    /*-------------------------------------------------
+    This function will be called after email is entered
+    this function will be responsible to check if any account exists
+    for the given email on onename.io
+    ---------------------------------------------------*/
+  $.get('/api/Onename/searchUser', body, function(response) {
+      if(response.emailExists)
+      errors.push('Email already exists.')
+  })
 
   if(password === '')
     errors.push('Password cannot be blank.')
