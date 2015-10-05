@@ -36,7 +36,7 @@ coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
         else {
             console.log(response);
         }
-    }
+    })
 }
 
 coinpunk.controllers.Accounts.prototype.signin = function() {
