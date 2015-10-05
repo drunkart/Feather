@@ -32,7 +32,10 @@ coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
     $.get('/api/Onename/searchUser', body, function(response) {
         emailExists = response.emailExists
     })
-    return emailExists
+    if (emailExists == true)
+        return true
+    else
+        return false
 }
 
 coinpunk.controllers.Accounts.prototype.signin = function() {
