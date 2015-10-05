@@ -29,11 +29,10 @@ for the given email on onename.io
 coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
     var body = {email: email};
     $.get('/api/Onename/searchUser', body, function(response) {
-        console.log(response)
         if(response.emailExists == true)
         {
             console.log("True")
-            return true    
+            return true
         }
         else
         {
@@ -115,8 +114,8 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.');
 
-  if((/.+@.+\..+/.exec(email) !== null) && this.emailSearch(email))
-      errors.push('Email already exists.');
+  if(this.emailSearch(email))
+    errors.push('Email already exists.');
 
   if(password === '')
     errors.push('Password cannot be blank.')
