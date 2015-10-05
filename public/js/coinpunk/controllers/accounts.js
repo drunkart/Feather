@@ -28,14 +28,14 @@ for the given email on onename.io
 
 coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
     var body = {email: email},
-        this.emailExists = null
+        this.emailExists = null,
         that = this
     $.get('/api/Onename/searchUser', body, function(response) {
         that.emailExists = response.emailExists
         console.log(that.emailExists)
     })
-    console.log(that.emailExists)
-    if (that.emailExists == true)
+    console.log(this.emailExists)
+    if (this.emailExists == true)
     {
         console.log("true")
         return true
