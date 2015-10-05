@@ -27,11 +27,16 @@ for the given email on onename.io
 ---------------------------------------------------*/
 
 coinpunk.controllers.Accounts.prototype.emailSearch = function(email) {
-    var onename = new coinpunk.Onename();
-    if (onename.findEmail(email))
-        return true
-    else
-        return false
+    var body = {email: email};
+    $.get('/api/Onename/searchUser', body, function(response) {
+        if(response.result == 'error') {
+          errorDiv.removeClass('hidden');
+          errorDiv.text(response.message);
+        }
+        else {
+            console.log(response);
+        }
+    }
 }
 
 coinpunk.controllers.Accounts.prototype.signin = function() {
