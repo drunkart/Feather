@@ -93,10 +93,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
     errors.push('Email is not valid.');
 
   var body = {email: email}
-  console.log(self.errors)
   $.get('/api/Onename/searchUser', body, function(response) {
-      console.log(self.errors);
-      console.log(response.emailExists);
   })
 
   if(password === '')
@@ -125,6 +122,10 @@ coinpunk.controllers.Accounts.prototype.create = function() {
     var address   = wallet.createNewAddress('Default');
     var change    = wallet.createNewAddress('change', true);
     var walletKey = wallet.createWalletKey(email, password);
+
+    $.post('/api/Onename/createUser', {email: email, password: password}, function(response){
+        console.log(response)
+    })
 
     coinpunk.wallet = wallet;
 
