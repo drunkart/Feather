@@ -21,6 +21,7 @@ coinpunk.controllers.Accounts.prototype.passwordStrength = {
 }
 
 coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) {
+    var err = null;
     $.ajax({
       type: 'GET',
       cache: false,
@@ -28,8 +29,18 @@ coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) 
       data: {email: email},
       dataType: 'json',
       success: function(response) {
-          if(callback)
-            callback(response);
+          if (response) {
+              err = false
+          }
+          if (!response) {
+              err = true
+          }
+          if (callback) {
+              callback(response)
+          }
+          if (err !== null) {
+              callback(err)
+          }
       },
       async: true
     });
@@ -109,9 +120,11 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.')
 
-  this.emailSearch(email, function(callback) {
-      if(callback.emailExists == true)
+  this.emailSearch(email, function(err, callback) {
+      console.log(err)
+      if (callback.emailExists == true) {
         errors.push('Email already exists.')
+      }
   })
 
   if(password === '')
