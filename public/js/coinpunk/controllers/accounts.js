@@ -31,7 +31,7 @@ coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) 
           if(callback)
             callback(response);
       },
-      async: false
+      async: true
     });
 }
 
