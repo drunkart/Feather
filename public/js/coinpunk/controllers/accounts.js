@@ -21,10 +21,6 @@ coinpunk.controllers.Accounts.prototype.passwordStrength = {
 }
 
 coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) {
-    /*$.get('/api/Onename/searchUser', {email: email}, function(response) {
-        if(callback)
-          callback(response);
-    });*/
     $.ajax({
       type: 'GET',
       async: false,
@@ -112,12 +108,10 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.')
 
-  async.parallel([
-      this.emailSearch(email, function(callback) {
-          if(callback.emailExists == true)
-            errors.push('Email already exists.')
-      })
-  ]);
+  this.emailSearch(email, function(callback) {
+      if(callback.emailExists == true)
+        errors.push('Email already exists.')
+  })
 
   if(password === '')
     errors.push('Password cannot be blank.')
