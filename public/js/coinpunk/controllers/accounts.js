@@ -93,9 +93,9 @@ coinpunk.controllers.Accounts.prototype.create = function() {
     errors.push('Email is not valid.');
 
   var body = {email: email}
-  console.log(self)
+  console.log(self.errors)
   $.get('/api/Onename/searchUser', body, function(response) {
-      console.log(self);
+      console.log(self.errors);
       console.log(response.emailExists);
   })
 
