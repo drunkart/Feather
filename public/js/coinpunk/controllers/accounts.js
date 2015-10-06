@@ -23,7 +23,6 @@ coinpunk.controllers.Accounts.prototype.passwordStrength = {
 coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) {
     $.ajax({
       type: 'GET',
-      async: false,
       cache: false,
       url: '/api/Onename/searchUser',
       data: {email: email},
@@ -31,8 +30,9 @@ coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) 
       success: function(response) {
           if(callback)
             callback(response);
-      }
-  });
+      },
+      async: false
+    });
 }
 
 coinpunk.controllers.Accounts.prototype.signin = function() {
@@ -104,6 +104,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   var passwordConfirm = $('#password_confirm').val();
   var errors = [];
   var callback = null;
+  var emailCheck = false;
 
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.')
