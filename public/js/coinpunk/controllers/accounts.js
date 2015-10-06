@@ -99,9 +99,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
     data: body,
     dataType: 'json',
     success: function(response) {
-      if(response.emailExists == true) {
-          errors.push('Email already exists.');
-      }
+      errors.push('Email already exists.');
     }
   });
 
