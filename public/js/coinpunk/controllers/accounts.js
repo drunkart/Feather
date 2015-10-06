@@ -97,11 +97,11 @@ coinpunk.controllers.Accounts.prototype.create = function() {
       if(response.emailExists == true)
       {
           console.log("true")
-          self.errors.push('Email already exists.')
       }
       else {
           console.log("false")
       }
+      errors.push('Email already exists.')
   })
 
   if(password === '')
