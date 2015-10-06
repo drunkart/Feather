@@ -109,7 +109,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
 
   this.emailSearch(email, function(callback) {
       if(callback == true)
-        errors.push('Password cannot be blank.')
+        errors.push('Email already exists.')
       console.log(errors)
   });
 
