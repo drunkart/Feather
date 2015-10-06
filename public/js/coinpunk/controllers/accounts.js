@@ -29,17 +29,8 @@ coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) 
       data: {email: email},
       dataType: 'json',
       success: function(response) {
-          if (response) {
-              err = false
-          }
-          if (!response) {
-              err = true
-          }
           if (callback) {
               callback(response)
-          }
-          if (err !== null) {
-              callback(err)
           }
       },
       async: true
@@ -120,10 +111,16 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.')
 
-  this.emailSearch(email, function(err, callback) {
-      console.log(err)
+  this.emailSearch(email, function(callback) {
       if (callback.emailExists == true) {
         errors.push('Email already exists.')
+      }
+      if(errors.length > 0) {
+        errorsDiv.html('');
+        for(var i=0;i<errors.length;i++) {
+          errorsDiv.html(errorsDiv.html() + coinpunk.utils.stripTags(errors[i]) + '<br>');
+        }
+        $('#errors').removeClass('hidden');
       }
   })
 
