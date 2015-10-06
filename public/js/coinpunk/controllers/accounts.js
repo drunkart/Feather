@@ -93,8 +93,16 @@ coinpunk.controllers.Accounts.prototype.create = function() {
     errors.push('Email is not valid.');
 
   var body = {email: email}
-  $.get('/api/Onename/searchUser', body, function(response) {
-  })
+  $.ajax({
+    type: 'GET',
+    url: '/api/Onename/searchUser',
+    data: body,
+    dataType: 'json',
+    success: function(response) {
+      if(response.emailExists == true) {
+          errors.push('Email already exists.');
+      }
+  });
 
   if(password === '')
     errors.push('Password cannot be blank.')
