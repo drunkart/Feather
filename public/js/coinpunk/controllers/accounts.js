@@ -105,20 +105,21 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   var callback = null;
 
   if(/.+@.+\..+/.exec(email) === null)
-    errors.push('Email is not valid.');
+    errors.push('Email is not valid.')
 
   this.emailSearch(email, function(callback) {
-      console.log(callback);
-      console.log(errors);
+      if(callback == true)
+        errors.push('Password cannot be blank.')
   });
+
   if(password === '')
     errors.push('Password cannot be blank.')
 
   if(password != passwordConfirm)
-    errors.push('Passwords do not match.');
+    errors.push('Passwords do not match.')
 
   if(password.length < this.requiredPasswordLength)
-    errors.push('Password must be at least 10 characters.');
+    errors.push('Password must be at least 10 characters.')
 
   var errorsDiv = $('#errors');
 
