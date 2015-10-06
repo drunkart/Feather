@@ -20,6 +20,20 @@ coinpunk.controllers.Accounts.prototype.passwordStrength = {
   }
 }
 
+coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) {
+    var body = {email: email}
+    $.ajax({
+      type: 'GET',
+      url: '/api/Onename/searchUser',
+      data: body,
+      dataType: 'json',
+      success: function(response) {
+          if(callback)
+            callback(response);
+      }
+    });
+}
+
 coinpunk.controllers.Accounts.prototype.signin = function() {
   var self = this;
   var id = $('#walletId').val();
@@ -92,16 +106,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.');
 
-  var body = {email: email}
-  $.ajax({
-    type: 'GET',
-    url: '/api/Onename/searchUser',
-    data: body,
-    dataType: 'json',
-    success: function(response) {
-      self.errors.push('Email already exists.');
-    }
-  });
+  console.log(this.emailSearch(email, callback))
 
   if(password === '')
     errors.push('Password cannot be blank.')
