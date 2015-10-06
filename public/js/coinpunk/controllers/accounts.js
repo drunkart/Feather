@@ -102,6 +102,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
       if(response.emailExists == true) {
           errors.push('Email already exists.');
       }
+    }
   });
 
   if(password === '')
