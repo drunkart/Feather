@@ -113,6 +113,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
     errors.push('Email is not valid.')
 
   this.emailSearch(email, function(callback) {
+      console.log(callback)
       if(callback.emailExists == true)
         errors.push('Email already exists.')
   });
