@@ -107,7 +107,8 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.');
 
-  console.log(this.emailSearch(email, callback))
+  this.emailSearch(email, callback);
+  console.log(callback);
 
   if(password === '')
     errors.push('Password cannot be blank.')
