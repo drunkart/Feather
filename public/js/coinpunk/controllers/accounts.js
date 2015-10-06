@@ -23,6 +23,7 @@ coinpunk.controllers.Accounts.prototype.passwordStrength = {
 coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) {
     $.ajax({
       type: 'GET',
+      async: false,
       url: '/api/Onename/searchUser',
       data: {email: email},
       dataType: 'json',
