@@ -102,6 +102,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   var password = $('#password').val();
   var passwordConfirm = $('#password_confirm').val();
   var errors = [];
+  var callback = null;
 
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.');
