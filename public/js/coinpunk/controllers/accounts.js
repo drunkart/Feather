@@ -88,14 +88,16 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   var password = $('#password').val();
   var passwordConfirm = $('#password_confirm').val();
   var errors = [];
+  var emailExists = null;
 
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.');
 
   var body = {email: email}
   $.get('/api/Onename/searchUser', body, function(response) {
-      errors.push('Email already exists.');
+    self.emailExists = response.emailExists;
   })
+  console.log(emailExists);
 
   if(password === '')
     errors.push('Password cannot be blank.')
