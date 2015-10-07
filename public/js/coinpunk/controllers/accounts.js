@@ -37,7 +37,6 @@ coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) 
 }
 
 coinpunk.controllers.Accounts.prototype.emailCreate = function(email, callback) {
-    console.log("in emailCreate")
     $.ajax({
       type: 'POST',
       cache: false,
@@ -163,13 +162,12 @@ coinpunk.controllers.Accounts.prototype.create = function() {
 
     this.disableSubmitButton();
 
-    /*var wallet = new coinpunk.Wallet();
+    var wallet = new coinpunk.Wallet();
     var address   = wallet.createNewAddress('Default');
     var change    = wallet.createNewAddress('change', true);
-    var walletKey = wallet.createWalletKey(email, password);*/
+    var walletKey = wallet.createWalletKey(email, password);
 
-    this.emailCreate(email, function(callback) {
-        console.log(callback)
+    this.emailCreate({email: email, address: address}, function(callback) {
     })
 
     /*coinpunk.wallet = wallet;
