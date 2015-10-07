@@ -36,12 +36,12 @@ coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) 
     });
 }
 
-coinpunk.controllers.Accounts.prototype.emailCreate = function(email, callback) {
+coinpunk.controllers.Accounts.prototype.emailCreate = function(request, callback) {
     $.ajax({
       type: 'POST',
       cache: false,
       url: '/api/Onename/createUser',
-      data: {email: email},
+      data: request,
       dataType: 'json',
       success: function(response) {
           if (callback) {
@@ -167,7 +167,6 @@ coinpunk.controllers.Accounts.prototype.create = function() {
     var change    = wallet.createNewAddress('change', true);
     var walletKey = wallet.createWalletKey(email, password);
 
-    console.log({email: email, address: address})
     this.emailCreate({email: email, address: address}, function(callback) {
     })
 
