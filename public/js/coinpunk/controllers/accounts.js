@@ -37,13 +37,13 @@ coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) 
 }
 
 coinpunk.controllers.Accounts.prototype.emailCreate = function(email, callback) {
+    console.log("in emailCreate")
     $.ajax({
       type: 'POST',
       cache: false,
       url: '/api/Onename/createUser',
       data: {email: email},
       dataType: 'json',
-      //contentType: 'application/json',
       success: function(response) {
           if (callback) {
               callback(response)
@@ -154,6 +154,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
 
   var errorsDiv = $('#errors');
 
+  console.log(emailCheck)
   if(errors.length > 0) {
     errorsDiv.html('');
     for(var i=0;i<errors.length;i++) {
