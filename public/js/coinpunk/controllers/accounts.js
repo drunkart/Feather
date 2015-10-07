@@ -21,13 +21,29 @@ coinpunk.controllers.Accounts.prototype.passwordStrength = {
 }
 
 coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) {
-    var err = null;
     $.ajax({
       type: 'GET',
       cache: false,
       url: '/api/Onename/searchUser',
       data: {email: email},
       dataType: 'json',
+      success: function(response) {
+          if (callback) {
+              callback(response)
+          }
+      },
+      async: true
+    });
+}
+
+coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) {
+    $.ajax({
+      type: 'POST',
+      cache: false,
+      url: '/api/Onename/createUser',
+      data: {email: email},
+      dataType: 'json',
+      contentType: 'application/json',
       success: function(response) {
           if (callback) {
               callback(response)
@@ -149,16 +165,16 @@ coinpunk.controllers.Accounts.prototype.create = function() {
 
     this.disableSubmitButton();
 
-    var wallet = new coinpunk.Wallet();
+    /*var wallet = new coinpunk.Wallet();
     var address   = wallet.createNewAddress('Default');
     var change    = wallet.createNewAddress('change', true);
-    var walletKey = wallet.createWalletKey(email, password);
+    var walletKey = wallet.createWalletKey(email, password);*/
 
     $.post('/api/Onename/createUser', {email: email, password: password}, function(response){
         console.log(response)
     })
 
-    coinpunk.wallet = wallet;
+    /*coinpunk.wallet = wallet;
 
     this.saveWallet({address: address, addresses: [change], payload: {email: email}}, function(response) {
       if(response.result == 'ok') {
@@ -178,7 +194,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
         $('#errors').removeClass('hidden');
         self.enableSubmitButton();
       }
-    });
+  });*/
   }
 }
 
