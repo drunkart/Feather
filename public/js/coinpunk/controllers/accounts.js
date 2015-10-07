@@ -122,6 +122,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
         }
         $('#errors').removeClass('hidden');
       }
+      emailCheck = true;
   })
 
   if(password === '')
@@ -141,7 +142,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
       errorsDiv.html(errorsDiv.html() + coinpunk.utils.stripTags(errors[i]) + '<br>');
     }
     $('#errors').removeClass('hidden');
-  } else {
+  } else if (emailCheck = true;) {
     $('#errors').addClass('hidden');
 
     this.disableSubmitButton();
