@@ -36,8 +36,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "browserify": "3.19.1",
     "uglify-js": "2.4.8",
-    "hasprop": "0.0.3",
-    "tape": "1.1.0"
+    "hasprop": "0.0.3"
   },
   "scripts": {
     "test": "NODE_ENV=test istanbul test ./node_modules/.bin/_mocha -- --reporter list test/coinpunk/*",
