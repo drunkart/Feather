@@ -122,14 +122,12 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   var passwordConfirm = $('#password_confirm').val();
   var errors = [];
   var callback = null;
-  var emailCheck = false;
 
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.')
 
   if(/.+@.+\..+/.exec(email) !== null) {
       this.emailSearch(email, function(callback) {
-          this.emailCheck = true;
           if (callback.emailExists == true) {
             errors.push('Email already exists.')
           }
@@ -161,7 +159,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
       errorsDiv.html(errorsDiv.html() + coinpunk.utils.stripTags(errors[i]) + '<br>');
     }
     $('#errors').removeClass('hidden');
-  } else if (emailCheck == true) {
+  } else {
     $('#errors').addClass('hidden');
 
     this.disableSubmitButton();
