@@ -142,7 +142,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
       errorsDiv.html(errorsDiv.html() + coinpunk.utils.stripTags(errors[i]) + '<br>');
     }
     $('#errors').removeClass('hidden');
-  } else if (emailCheck = true;) {
+} else if (emailCheck == true) {
     $('#errors').addClass('hidden');
 
     this.disableSubmitButton();
