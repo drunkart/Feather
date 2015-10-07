@@ -43,7 +43,7 @@ coinpunk.controllers.Accounts.prototype.emailCreate = function(email, callback) 
       url: '/api/Onename/createUser',
       data: {email: email},
       dataType: 'json',
-      contentType: 'application/json',
+      //contentType: 'application/json',
       success: function(response) {
           if (callback) {
               callback(response)
