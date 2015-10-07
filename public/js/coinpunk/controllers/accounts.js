@@ -168,10 +168,10 @@ coinpunk.controllers.Accounts.prototype.create = function() {
     var walletKey = wallet.createWalletKey(email, password);
 
     this.emailCreate({email: email, address: address}, function(callback) {
-        console.log(callback)
+        console.log(callback.status)
     })
 
-    /*coinpunk.wallet = wallet;
+    coinpunk.wallet = wallet;
 
     this.saveWallet({address: address, addresses: [change], payload: {email: email}}, function(response) {
       if(response.result == 'ok') {
@@ -191,7 +191,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
         $('#errors').removeClass('hidden');
         self.enableSubmitButton();
       }
-  });*/
+  });
   }
 }
 
