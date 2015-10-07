@@ -128,6 +128,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
     errors.push('Email is not valid.')
 
   if(/.+@.+\..+/.exec(email) !== null) {
+      emailCheck = true;
       this.emailSearch(email, function(callback) {
           if (callback.emailExists == true) {
             errors.push('Email already exists.')
@@ -139,7 +140,6 @@ coinpunk.controllers.Accounts.prototype.create = function() {
             }
             $('#errors').removeClass('hidden');
           }
-          emailCheck = true;
       })
   };
 
