@@ -111,19 +111,21 @@ coinpunk.controllers.Accounts.prototype.create = function() {
   if(/.+@.+\..+/.exec(email) === null)
     errors.push('Email is not valid.')
 
-  this.emailSearch(email, function(callback) {
-      if (callback.emailExists == true) {
-        errors.push('Email already exists.')
-      }
-      if(errors.length > 0) {
-        errorsDiv.html('');
-        for(var i=0;i<errors.length;i++) {
-          errorsDiv.html(errorsDiv.html() + coinpunk.utils.stripTags(errors[i]) + '<br>');
-        }
-        $('#errors').removeClass('hidden');
-      }
-      emailCheck = true;
-  })
+  if(/.+@.+\..+/.exec(email) !== null) {
+      this.emailSearch(email, function(callback) {
+          if (callback.emailExists == true) {
+            errors.push('Email already exists.')
+          }
+          if(errors.length > 0) {
+            errorsDiv.html('');
+            for(var i=0;i<errors.length;i++) {
+              errorsDiv.html(errorsDiv.html() + coinpunk.utils.stripTags(errors[i]) + '<br>');
+            }
+            $('#errors').removeClass('hidden');
+          }
+          emailCheck = true;
+      })
+  };
 
   if(password === '')
     errors.push('Password cannot be blank.')
@@ -142,7 +144,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
       errorsDiv.html(errorsDiv.html() + coinpunk.utils.stripTags(errors[i]) + '<br>');
     }
     $('#errors').removeClass('hidden');
-} else if (emailCheck == true) {
+  } else if (emailCheck == true) {
     $('#errors').addClass('hidden');
 
     this.disableSubmitButton();
