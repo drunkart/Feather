@@ -152,7 +152,6 @@ coinpunk.controllers.Accounts.prototype.create = function() {
 
   var errorsDiv = $('#errors');
 
-  console.log("emailcheck: " + emailCheck)
   if(errors.length > 0) {
     errorsDiv.html('');
     for(var i=0;i<errors.length;i++) {
