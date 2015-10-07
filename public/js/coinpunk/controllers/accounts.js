@@ -167,6 +167,7 @@ coinpunk.controllers.Accounts.prototype.create = function() {
     var change    = wallet.createNewAddress('change', true);
     var walletKey = wallet.createWalletKey(email, password);
 
+    console.log({email: email, address: address})
     this.emailCreate({email: email, address: address}, function(callback) {
     })
 
