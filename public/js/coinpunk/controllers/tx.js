@@ -200,7 +200,7 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
       data: {email: email},
       dataType: 'json',
       success: function(response) {
-          if (response.error !== null) {
+          if (response.error) {
               console.log(response.error)
               errors.push(response.error)
           } else {
