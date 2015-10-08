@@ -20,7 +20,7 @@ coinpunk.controllers.Tx.prototype.send = function() {
     return renderPage();
 
   var changeAddress = coinpunk.wallet.createNewAddress('change', true);
-  
+
   this.saveWallet({override: true, address: changeAddress}, function(response) {
     if(response.result != 'ok') {
       return coinpunk.router.route('signout');
@@ -61,17 +61,17 @@ coinpunk.controllers.Tx.prototype.sendBTCUpdate = function() {
   var self = this;
   var amountExchange = $('#amountExchange').val();
   coinpunk.pricing.getLatest(function(price, currency) {
-    
+
     if(amountExchange == 0)
       return;
 
     var newAmount = parseFloat(amountExchange / price).toFixed(6).replace(/\.0+$/, '');
-    
+
     if(newAmount == "NaN")
       return;
-    
+
     var amount = $('#amount');
-    
+
     if(amount.val() != newAmount) {
       amount.val(newAmount);
       self.calculateFee();
@@ -87,7 +87,11 @@ coinpunk.controllers.Tx.prototype.create = function() {
   var amount = $('#createSendForm #amount').val();
   var errors = [];
   var errorsDiv = $('#errors');
-  
+  console.log(address)
+  this.emailtoFtc(address, function(callback) {
+
+  })
+
   this.calculateFee();
   var calculatedFee = $('#calculatedFee').val();
 
@@ -180,13 +184,29 @@ coinpunk.controllers.Tx.prototype.create = function() {
 coinpunk.controllers.Tx.prototype.displayErrors = function(errors, errorsDiv) {
   if(errors.length > 0) {
     errorsDiv.removeClass('hidden');
-    
+
     for(var i=0; i<errors.length; i++) {
       $('#errors').html($('#errors').html()+coinpunk.utils.stripTags(errors[i])+'<br>');
     }
     return;
   }
 };
+
+coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
+    var email = $('#email').val();
+
+    $.ajax({
+      type: 'GET',
+      cache: false,
+      url: '/api/Onename/getFTC',
+      data: {email: email},
+      dataType: 'json',
+      success: function(response) {
+          console.log(response)
+      },
+      async: true
+    });
+}
 
 coinpunk.controllers.Tx.prototype.calculateFee = function() {
   var address = $('#address').val();
@@ -236,15 +256,15 @@ coinpunk.controllers.Tx.prototype.scanQR = function(event) {
 
     if(uri.protocol() != 'feathercoin')
       return errorsDiv.removeClass('hidden').text('Not a valid Feathercoin QR code.');
-    
+
     var address = uri.path();
     if(!address || address == '')
       return errorsDiv.removeClass('hidden').text('No Feathercoin address found in QR code.');
 
     $('#address').val(address);
-    
+
     var queryHash = uri.search(true);
-    
+
     if(queryHash.amount) {
       $('#amount').val(queryHash.amount);
       coinpunk.controllers.tx.sendExchangeUpdate();
@@ -258,12 +278,12 @@ coinpunk.controllers.Tx.prototype.scanQR = function(event) {
   var img = new Image();
   img.onload = function() {
     /*
-    Helpful URLs: 
+    Helpful URLs:
     http://hacks.mozilla.org/2011/01/how-to-develop-a-html5-image-uploader/
     http://stackoverflow.com/questions/19432269/ios-html5-canvas-drawimage-vertical-scaling-bug-even-for-small-images
-  
+
     There are a lot of arbitrary things here. Help to clean this up welcome.
-    
+
     context.save();
     context.scale(1e6, 1e6);
     context.drawImage(img, 0, 0, 1e-7, 1e-7, 0, 0, 1e-7, 1e-7);
