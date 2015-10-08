@@ -203,9 +203,20 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
       dataType: 'json',
       success: function(response) {
           console.log(response)
+          if (response.error !== null) {
+              errors.push(response.error);
+          } else {
+            $('#address').val(response.ftcAddress)  
+          }
       },
       async: true
     });
+
+    if(errors.length > 0) {
+      this.displayErrors(errors, errorsDiv);
+      sendButton.removeClass('disabled');
+      return;
+    }
 }
 
 coinpunk.controllers.Tx.prototype.calculateFee = function() {
