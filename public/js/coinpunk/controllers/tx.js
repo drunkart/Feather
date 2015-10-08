@@ -200,11 +200,11 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
       data: {email: email},
       dataType: 'json',
       success: function(response) {
-          console.log(response)
           if (response.error !== null) {
               errors.push(response.error);
           } else {
-            $('#address').val(response.ftcAddress)
+              console.log(response.ftcAddress)
+              $('#address').val(response.ftcAddress)
           }
       },
       async: true
