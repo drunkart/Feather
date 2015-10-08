@@ -87,10 +87,6 @@ coinpunk.controllers.Tx.prototype.create = function() {
   var amount = $('#createSendForm #amount').val();
   var errors = [];
   var errorsDiv = $('#errors');
-  console.log(address)
-  this.emailtoFtc(address, function(callback) {
-
-  })
 
   this.calculateFee();
   var calculatedFee = $('#calculatedFee').val();
@@ -193,7 +189,9 @@ coinpunk.controllers.Tx.prototype.displayErrors = function(errors, errorsDiv) {
 };
 
 coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
-    var email = $('#email').val();
+    var email = $('#email').val(),
+        errors = [],
+        errorsDiv = $('#errors')
 
     $.ajax({
       type: 'GET',
@@ -206,7 +204,7 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
           if (response.error !== null) {
               errors.push(response.error);
           } else {
-            $('#address').val(response.ftcAddress)  
+            $('#address').val(response.ftcAddress)
           }
       },
       async: true
