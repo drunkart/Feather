@@ -55,8 +55,7 @@
                 <% if(!data.addresses[i].isChange) { %>
                   <tr>
                     <td><%- data.addresses[i].name %></td>
-                    <!--<td><%- data.addresses[i].address %></td>-->
-                    <td><%- coinpunk.wallet.walletId %></td>
+                    <td><%- data.addresses[i].address %></td>
                     <td>
                       <span class="addExchangePrice">
                         <%- coinpunk.wallet.addressReceivedAmount(data.addresses[i].address) %> FTC
