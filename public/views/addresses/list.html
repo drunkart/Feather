@@ -14,7 +14,7 @@
         <h4>No receive addresses yet.</h4>
 
       <% } else { %>
-        
+
         <div class="hidden-lg hidden-md">
           <% for(var i=0;i<data.addresses.length;i++) { %>
           <div class="row">
@@ -26,14 +26,14 @@
                 </span>
               </div>
               <div><%- data.addresses[i].address %></div>
-              
+
               <div><a href="#/addresses/request/<%- data.addresses[i].address %>" class="btn btn-primary"><i class="fa fa-qrcode"></i> Request Payment</a></div>
             </div>
           </div>
           <hr>
           <% } %>
         </div>
-        
+
         <div class="visible-md visible-lg">
           <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -55,7 +55,8 @@
                 <% if(!data.addresses[i].isChange) { %>
                   <tr>
                     <td><%- data.addresses[i].name %></td>
-                    <td><%- data.addresses[i].address %></td>
+                    <!--<td><%- data.addresses[i].address %></td>-->
+                    <td><%- coinpunk.wallet.walletId %></td>
                     <td>
                       <span class="addExchangePrice">
                         <%- coinpunk.wallet.addressReceivedAmount(data.addresses[i].address) %> FTC
