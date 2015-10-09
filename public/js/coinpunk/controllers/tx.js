@@ -204,6 +204,7 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
               if (response.error) {
                   errors.push(response.error)
               } else {
+                  console.log("From tx")
                   console.log(response)
               }
           },
