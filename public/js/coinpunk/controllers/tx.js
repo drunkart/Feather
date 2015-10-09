@@ -209,7 +209,6 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
               if (response.error) {
                   errors.push(response.error)
               } else {
-                  console.log(response.address)
                   that.displayFTC(response.address)
               }
           },
