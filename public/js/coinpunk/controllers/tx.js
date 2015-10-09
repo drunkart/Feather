@@ -216,6 +216,7 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
         });
     }
     else {
+        this.displayFTC('');
         return this.displayErrors(['Email address can not be blank.'], errorsDiv);
     }
 
