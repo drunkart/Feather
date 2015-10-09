@@ -202,20 +202,15 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
           data: {email: email},
           dataType: 'json',
           success: function(response) {
-              console.log(response)
               if (response.error) {
                   errors.push(response.error)
               } else {
                   console.log(response.address)
-                  address = response.address
+                  $('#address').val(address)
               }
           },
           async: true
         });
-        console.log(address)
-        if (address !== null) {
-            $('#address').val(address)
-        }
     }
     else {
         return this.displayErrors(['Onename address can not be blank.'], errorsDiv);
