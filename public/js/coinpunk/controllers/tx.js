@@ -190,6 +190,7 @@ coinpunk.controllers.Tx.prototype.displayErrors = function(errors, errorsDiv) {
 
 coinpunk.controllers.Tx.prototype.displayFTC = function(address) {
     $('#address').val(address);
+    errorsDiv.removeClass('hidden');
 }
 
 coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
