@@ -194,7 +194,7 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
         errorsDiv = $('#errors')
 
     if(email === null) {
-        errors.push('Email is not valid.')
+        return this.displayErrors(['Onename address can not be blank.'], errorsDiv);
     }
     else {
         $.ajax({
@@ -211,7 +211,7 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
               }
           },
           async: true
-        });    
+        });
     }
 
     if(errors.length > 0) {
