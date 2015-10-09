@@ -204,8 +204,7 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
               if (response.error) {
                   errors.push(response.error)
               } else {
-                  var address = '1Fbi3WDPEK6FxKppCXReCPFTgr9KhWhNB7'
-                  $('#address').val(address)
+                  console.log(response)
               }
           },
           async: true
