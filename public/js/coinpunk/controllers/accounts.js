@@ -201,7 +201,7 @@ coinpunk.controllers.Accounts.prototype.performImport = function(id, password) {
 
       coinpunk.wallet = wallet;
 
-      self.saveWallet({importAddresses: coinpunk.wallet.addressHashes()}, function(resp) {
+      self.saveWallet({importAddresses: coinpunk.wallet.addressHashes(), payload: {email: id}}, function(resp) {
         if(resp.result == 'exists') {
           $('#importErrorDialog').removeClass('hidden');
           $('#importErrorMessage').text('Cannot import your wallet, because the wallet already exists on this server.');
