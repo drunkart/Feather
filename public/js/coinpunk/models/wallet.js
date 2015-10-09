@@ -19,6 +19,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
   this.loadPayload = function(encryptedJSON) {
     console.log(encryptedJSON)
     var payloadJSON = sjcl.decrypt(this.walletKey, encryptedJSON);
+    console.log(this.walletKey)
     console.log(payloadJSON)
     this.payloadHash = this.computePayloadHash(payloadJSON);
     var payload = JSON.parse(payloadJSON);
