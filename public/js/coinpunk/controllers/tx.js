@@ -197,7 +197,7 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
         $.ajax({
           type: 'GET',
           cache: false,
-          url: '/api/Onename/getFTC',
+          url: '/api/wallet/getFTC',
           data: {email: email},
           dataType: 'json',
           success: function(response) {
