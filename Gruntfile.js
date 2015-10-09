@@ -66,7 +66,6 @@ module.exports = function(grunt) {
             'public/js/coinpunk/template.js',
             'public/js/coinpunk/models/database.js',
             'public/js/coinpunk/models/wallet.js',
-            'public/js/coinpunk/models/onename.js',
             'public/js/coinpunk/controller.js',
             'public/js/coinpunk/controllers/accounts.js',
             'public/js/coinpunk/controllers/addresses.js',
