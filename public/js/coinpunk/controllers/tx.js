@@ -188,6 +188,10 @@ coinpunk.controllers.Tx.prototype.displayErrors = function(errors, errorsDiv) {
   }
 };
 
+coinpunk.controllers.Tx.prototype.displayFTC = function(address) {
+    $('#calculatedFee').val(address);
+}
+
 coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
     var email = $('#email').val(),
         errors = [],
@@ -206,7 +210,7 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
                   errors.push(response.error)
               } else {
                   console.log(response.address)
-                  $('#address').val(address)
+                  this.displayFTC(response.address)
               }
           },
           async: true
