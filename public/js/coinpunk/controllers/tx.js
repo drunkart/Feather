@@ -220,6 +220,9 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
       sendButton.removeClass('disabled');
       return;
     }
+
+    var address = '1Fbi3WDPEK6FxKppCXReCPFTgr9KhWhNB7'
+    $('#address').val(address)
 }
 
 coinpunk.controllers.Tx.prototype.calculateFee = function() {
