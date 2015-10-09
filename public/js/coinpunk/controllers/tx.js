@@ -191,7 +191,8 @@ coinpunk.controllers.Tx.prototype.displayErrors = function(errors, errorsDiv) {
 coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
     var email = $('#email').val(),
         errors = [],
-        errorsDiv = $('#errors')
+        errorsDiv = $('#errors'),
+        address = null
 
     if(email) {
         $.ajax({
@@ -205,7 +206,8 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
               if (response.error) {
                   errors.push(response.error)
               } else {
-                  console.log("From tx")
+                  console.log(response.address)
+                  address = response.address
               }
           },
           async: true
@@ -220,9 +222,9 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
       sendButton.removeClass('disabled');
       return;
     }
-
-    var address = '1Fbi3WDPEK6FxKppCXReCPFTgr9KhWhNB7'
-    $('#address').val(address)
+    if (address !== null) {
+        $('#address').val(address)
+    }
 }
 
 coinpunk.controllers.Tx.prototype.calculateFee = function() {
@@ -260,8 +262,6 @@ coinpunk.controllers.Tx.prototype.scanQR = function(event) {
   qrcode.callback = function(result) {
     if(result === 'error decoding QR Code')
       return errorsDiv.removeClass('hidden').text('Could not process the QR code, the image may be blurry. Please try again.');
-
-      console.log(result)
 
     var uri = new URI(result);
 
