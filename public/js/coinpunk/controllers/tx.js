@@ -201,11 +201,11 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
           data: {email: email},
           dataType: 'json',
           success: function(response) {
+              console.log(response)
               if (response.error) {
                   errors.push(response.error)
               } else {
                   console.log("From tx")
-                  console.log(response)
               }
           },
           async: true
