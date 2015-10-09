@@ -212,6 +212,10 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
           },
           async: true
         });
+        console.log(address)
+        if (address !== null) {
+            $('#address').val(address)
+        }
     }
     else {
         return this.displayErrors(['Onename address can not be blank.'], errorsDiv);
@@ -221,9 +225,6 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
       this.displayErrors(errors, errorsDiv);
       sendButton.removeClass('disabled');
       return;
-    }
-    if (address !== null) {
-        $('#address').val(address)
     }
 }
 
