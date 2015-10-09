@@ -196,7 +196,7 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
     var email = $('#email').val(),
         errors = [],
         errorsDiv = $('#errors'),
-        address = null
+        that = this
 
     if(email) {
         $.ajax({
@@ -210,7 +210,7 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
                   errors.push(response.error)
               } else {
                   console.log(response.address)
-                  this.displayFTC(response.address)
+                  that.displayFTC(response.address)
               }
           },
           async: true
