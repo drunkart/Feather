@@ -189,7 +189,7 @@ coinpunk.controllers.Tx.prototype.displayErrors = function(errors, errorsDiv) {
 };
 
 coinpunk.controllers.Tx.prototype.displayFTC = function(address) {
-    $('#calculatedFee').val(address);
+    $('#address').val(address);
 }
 
 coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
