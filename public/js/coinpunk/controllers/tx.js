@@ -193,21 +193,26 @@ coinpunk.controllers.Tx.prototype.emailtoFtc = function() {
         errors = [],
         errorsDiv = $('#errors')
 
-    $.ajax({
-      type: 'GET',
-      cache: false,
-      url: '/api/Onename/getFTC',
-      data: {email: email},
-      dataType: 'json',
-      success: function(response) {
-          if (response.error) {
-              errors.push(response.error)
-          } else {
-              $('#address').val(response.ftcAddress)
-          }
-      },
-      async: true
-    });
+    if(email === null) {
+        errors.push('Email is not valid.')
+    }
+    else {
+        $.ajax({
+          type: 'GET',
+          cache: false,
+          url: '/api/Onename/getFTC',
+          data: {email: email},
+          dataType: 'json',
+          success: function(response) {
+              if (response.error) {
+                  errors.push(response.error)
+              } else {
+                  $('#address').val(response.ftcAddress)
+              }
+          },
+          async: true
+        });    
+    }
 
     if(errors.length > 0) {
       this.displayErrors(errors, errorsDiv);
