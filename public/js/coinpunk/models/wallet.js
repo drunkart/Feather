@@ -10,6 +10,15 @@ coinpunk.Wallet = function(walletKey, walletId) {
   this.unspentConfirmations = [];
   var keyPairs = [];
 
+  this.getBalance = function () {
+      var wallet = new Bitcoin.Wallet(this.network),
+          Addresses = wallet.getAllAddresses()
+          console.log("From getBalance")
+          console.log(wallet)
+          console.log(Addresses)
+          return Addresses
+  };
+
   this.loadPayloadWithLogin = function(id, password, payload) {
     this.createWalletKey(id, password);
     this.loadPayload(payload);
