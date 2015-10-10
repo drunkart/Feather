@@ -2,6 +2,7 @@ coinpunk.Controller = function() {
 };
 
 coinpunk.Controller.prototype.getUnspent = function(confirmations, callback) {
+  console.log("From getUnspent")
   var self = this;
   var query = {addresses: coinpunk.wallet.addressHashes()};
 
@@ -15,6 +16,7 @@ coinpunk.Controller.prototype.getUnspent = function(confirmations, callback) {
       coinpunk.router.route('insight_error');
       return;
     }
+    console.log(resp.unspent)
     self.mergeUnspent(resp.unspent, callback);
   });
 };

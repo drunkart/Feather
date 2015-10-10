@@ -222,7 +222,6 @@ coinpunk.Wallet = function(walletKey, walletId) {
 
   this.getUnspent = function(confirmations) {
     console.log("From getUnspent")
-    console.log(this.unspent)
     var confirmations = confirmations || 0;
     var unspent = [];
 
