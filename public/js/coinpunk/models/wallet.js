@@ -241,6 +241,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
 
   this.safeUnspentBalance = function() {
     var safeUnspent = this.safeUnspent();
+    console.log(safeUnspent)
     var amount = new BigNumber(0);
     for(var i=0;i<safeUnspent.length;i++)
       amount = amount.plus(safeUnspent[i].amount);

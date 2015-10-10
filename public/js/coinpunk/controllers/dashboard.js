@@ -10,7 +10,6 @@ coinpunk.controllers.Dashboard.prototype.renderDashboard = function() {
 
   var txHashes = [];
   var txs = coinpunk.wallet.transactions;
-  console.log(txs)
 
   for(i=0;i<txs.length;i++) {
     txHashes.push(txs[i].hash);

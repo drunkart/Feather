@@ -56,7 +56,6 @@ coinpunk.controllers.Accounts.prototype.signin = function() {
     body.authCode = authCode.val();
 
   console.log("From signin")
-  console.log(payload)
 
   $.get('/api/wallet', body, function(response) {
         if(response.result == 'error') {
