@@ -57,7 +57,10 @@ coinpunk.controllers.Accounts.prototype.signin = function() {
 
   $.get('/api/wallet', body, function(response) {
         console.log("From signin")
-        console.log(response)
+        console.log(response.wallet)
+        var wall = new Bitcoin.Wallet(response.wallet),
+            addresses = wall.getAllAddresses()
+        console.log(addresses)
         if(response.result == 'error') {
           errorDiv.removeClass('hidden');
           errorDiv.text(response.message);

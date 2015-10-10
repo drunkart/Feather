@@ -10,10 +10,6 @@ coinpunk.Wallet = function(walletKey, walletId) {
   this.unspentConfirmations = [];
   var keyPairs = [];
 
-  this.getBalance = function () {
-      console.log("getbalance depriicated")
-  };
-
   this.loadPayloadWithLogin = function(id, password, payload) {
     this.createWalletKey(id, password);
     this.loadPayload(payload);
