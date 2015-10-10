@@ -227,7 +227,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
         console.log(this.unspent[i].hash)
         console.log(confirmations)
         console.log(this.unspentConfirmations)
-        console.log(this.unspentConfirmations[this.unspent[i].hash])
+        console.log(this.unspentConfirmations['c65d3a855a5a48c21c922e22c90ad4faa8eda992dafc381972c4ccb8c32dd8ac'])
         if(this.unspentConfirmations[this.unspent[i].hash] >= confirmations) {
             unspent.push(this.unspent[i]);
             console.log(unspent)
