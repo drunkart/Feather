@@ -181,7 +181,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
       }
 
       this.unspentConfirmations[newUnspent[i].hash] = newUnspent[i].confirmations;
-      console.log(unspentConfirmations)
+      console.log(this.unspentConfirmations)
 
       if(match == true)
         continue;
