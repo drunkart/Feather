@@ -2,7 +2,6 @@ coinpunk.Controller = function() {
 };
 
 coinpunk.Controller.prototype.getUnspent = function(confirmations, callback) {
-  console.log("From getUnspent")
   var self = this;
   var query = {addresses: coinpunk.wallet.addressHashes()};
 

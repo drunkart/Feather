@@ -164,9 +164,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
   };
 
   this.mergeUnspent = function(newUnspent) {
-    console.log("From mergeUnspent")
     var changed = false;
-    console.log(newUnspent)
     this.unspentConfirmations = this.unspentConfirmations || {};
 
     for(var i=0;i<newUnspent.length;i++) {
@@ -182,8 +180,6 @@ coinpunk.Wallet = function(walletKey, walletId) {
       }
 
       this.unspentConfirmations[newUnspent[i].hash] = newUnspent[i].confirmations;
-      console.log(this.unspentConfirmations)
-
       if(match == true)
         continue;
 
@@ -221,17 +217,12 @@ coinpunk.Wallet = function(walletKey, walletId) {
   };
 
   this.getUnspent = function(confirmations) {
-    console.log("From getUnspent")
     var confirmations = confirmations || 0;
     var unspent = [];
 
     for(var i=0; i<this.unspent.length; i++) {
-        console.log(this.unspent[i].hash)
-        console.log(confirmations)
-        console.log(this.unspentConfirmations)
         if(this.unspentConfirmations[this.unspent[i].hash] >= confirmations) {
             unspent.push(this.unspent[i]);
-            console.log(unspent)
         }
     }
     return unspent;
