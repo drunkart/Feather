@@ -20,22 +20,6 @@ coinpunk.controllers.Accounts.prototype.passwordStrength = {
   }
 }
 
-coinpunk.controllers.Accounts.prototype.emailSearch = function(email, callback) {
-    $.ajax({
-      type: 'GET',
-      cache: false,
-      url: '/api/Onename/searchUser',
-      data: {email: email},
-      dataType: 'json',
-      success: function(response) {
-          if (callback) {
-              callback(response)
-          }
-      },
-      async: true
-    });
-}
-
 coinpunk.controllers.Accounts.prototype.emailCreate = function(request, callback) {
     $.ajax({
       type: 'POST',
@@ -72,31 +56,33 @@ coinpunk.controllers.Accounts.prototype.signin = function() {
     body.authCode = authCode.val();
 
   $.get('/api/wallet', body, function(response) {
-    if(response.result == 'error') {
-      errorDiv.removeClass('hidden');
-      errorDiv.text(response.message);
-    } else if(response.result == 'authCodeNeeded') {
-      errorDiv.removeClass('hidden');
-      errorDiv.text(response.message);
-      $('#signinPassword').after('
-        <div class="form-group">
-          <label for="authCode" class="col-lg-2 control-label">Auth Code</label>
-          <div class="col-lg-4">
-            <input id="authCode" type="password" class="form-control" placeholder="">
-          </div>
-        </div>
-      ');
-      $('#authCode').focus();
-      coinpunk.usingAuthKey = true;
+        console.log("From signin")
+        console.log(response)
+        if(response.result == 'error') {
+          errorDiv.removeClass('hidden');
+          errorDiv.text(response.message);
+        } else if(response.result == 'authCodeNeeded') {
+          errorDiv.removeClass('hidden');
+          errorDiv.text(response.message);
+          $('#signinPassword').after('
+            <div class="form-group">
+              <label for="authCode" class="col-lg-2 control-label">Auth Code</label>
+              <div class="col-lg-4">
+                <input id="authCode" type="password" class="form-control" placeholder="">
+              </div>
+            </div>
+          ');
+          $('#authCode').focus();
+          coinpunk.usingAuthKey = true;
 
-    } else {
-      errorDiv.addClass('hidden');
-      wallet.loadPayload(response.wallet);
-      wallet.sessionKey = response.sessionKey;
-      coinpunk.wallet = wallet;
-      coinpunk.router.listener();
-      coinpunk.router.route('dashboard');
-    }
+        } else {
+          errorDiv.addClass('hidden');
+          wallet.loadPayload(response.wallet);
+          wallet.sessionKey = response.sessionKey;
+          coinpunk.wallet = wallet;
+          coinpunk.router.listener();
+          coinpunk.router.route('dashboard');
+        }
   });
 }
 

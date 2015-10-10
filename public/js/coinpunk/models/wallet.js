@@ -11,12 +11,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
   var keyPairs = [];
 
   this.getBalance = function () {
-      var wallet = new Bitcoin.Wallet(this.network),
-          Addresses = wallet.getAllAddresses()
-          console.log("From getBalance")
-          console.log(wallet)
-          console.log(Addresses)
-          return Addresses
+      console.log("getbalance depriicated")
   };
 
   this.loadPayloadWithLogin = function(id, password, payload) {
