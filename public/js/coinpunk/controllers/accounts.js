@@ -55,8 +55,6 @@ coinpunk.controllers.Accounts.prototype.signin = function() {
   if(authCode)
     body.authCode = authCode.val();
 
-  console.log("From signin")
-
   $.get('/api/wallet', body, function(response) {
         if(response.result == 'error') {
           errorDiv.removeClass('hidden');
@@ -80,7 +78,6 @@ coinpunk.controllers.Accounts.prototype.signin = function() {
           wallet.loadPayload(response.wallet);
           wallet.sessionKey = response.sessionKey;
           coinpunk.wallet = wallet;
-          console.log(coinpunk.wallet)
           coinpunk.router.listener();
           coinpunk.router.route('dashboard');
         }

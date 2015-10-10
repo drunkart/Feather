@@ -241,7 +241,6 @@ coinpunk.Wallet = function(walletKey, walletId) {
 
   this.safeUnspentBalance = function() {
     var safeUnspent = this.safeUnspent();
-    console.log(safeUnspent)
     var amount = new BigNumber(0);
     for(var i=0;i<safeUnspent.length;i++)
       amount = amount.plus(safeUnspent[i].amount);
@@ -250,7 +249,9 @@ coinpunk.Wallet = function(walletKey, walletId) {
 
   // Safe to spend unspent txs.
   this.safeUnspent = function() {
+    console.log("From safeUnspent")
     var unspent = this.getUnspent();
+    console.log(unspent)
     var changeAddresses = this.changeAddressHashes();
     var safeUnspent = [];
     for(var u=0;u<unspent.length;u++) {
