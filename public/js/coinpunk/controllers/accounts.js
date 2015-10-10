@@ -55,11 +55,10 @@ coinpunk.controllers.Accounts.prototype.signin = function() {
   if(authCode)
     body.authCode = authCode.val();
 
+  console.log("From signin")
+  console.log(payload)
+
   $.get('/api/wallet', body, function(response) {
-        console.log("From signin")
-        console.log(response.wallet)
-        var addresses = Bitcoin.Wallet.getAllAddresses()
-        console.log(addresses)
         if(response.result == 'error') {
           errorDiv.removeClass('hidden');
           errorDiv.text(response.message);
@@ -82,6 +81,7 @@ coinpunk.controllers.Accounts.prototype.signin = function() {
           wallet.loadPayload(response.wallet);
           wallet.sessionKey = response.sessionKey;
           coinpunk.wallet = wallet;
+          console.log(coinpunk.wallet)
           coinpunk.router.listener();
           coinpunk.router.route('dashboard');
         }
