@@ -221,9 +221,14 @@ coinpunk.Wallet = function(walletKey, walletId) {
     var confirmations = confirmations || 0;
     var unspent = [];
 
-    for(var i=0; i<this.unspent.length; i++)
-      if(this.unspentConfirmations[this.unspent[i].hash] >= confirmations)
-        unspent.push(this.unspent[i]);
+    for(var i=0; i<this.unspent.length; i++) {
+        console.log("From getUnspent")
+        console.log(this.unspent[i].hash)
+        console.log(confirmations)
+        if(this.unspentConfirmations[this.unspent[i].hash] >= confirmations) {
+            unspent.push(this.unspent[i]);
+        }
+    }
     return unspent;
   };
 
@@ -249,9 +254,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
 
   // Safe to spend unspent txs.
   this.safeUnspent = function() {
-    console.log("From safeUnspent")
     var unspent = this.getUnspent();
-    console.log(unspent)
     var changeAddresses = this.changeAddressHashes();
     var safeUnspent = [];
     for(var u=0;u<unspent.length;u++) {
