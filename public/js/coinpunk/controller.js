@@ -16,7 +16,6 @@ coinpunk.Controller.prototype.getUnspent = function(confirmations, callback) {
       coinpunk.router.route('insight_error');
       return;
     }
-    console.log(resp.unspent)
     self.mergeUnspent(resp.unspent, callback);
   });
 };
