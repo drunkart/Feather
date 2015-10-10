@@ -218,11 +218,12 @@ coinpunk.Wallet = function(walletKey, walletId) {
   };
 
   this.getUnspent = function(confirmations) {
+    console.log("From getUnspent")
+    console.log(this.unspent)
     var confirmations = confirmations || 0;
     var unspent = [];
 
     for(var i=0; i<this.unspent.length; i++) {
-        console.log("From getUnspent")
         console.log(this.unspent[i].hash)
         console.log(confirmations)
         if(this.unspentConfirmations[this.unspent[i].hash] >= confirmations) {
