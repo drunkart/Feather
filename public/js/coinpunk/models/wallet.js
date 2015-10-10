@@ -166,6 +166,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
   this.mergeUnspent = function(newUnspent) {
     console.log("From mergeUnspent")
     var changed = false;
+    console.log(newUnspent)
     this.unspentConfirmations = this.unspentConfirmations || {};
 
     for(var i=0;i<newUnspent.length;i++) {
