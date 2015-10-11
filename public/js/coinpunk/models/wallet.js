@@ -373,7 +373,8 @@ coinpunk.Wallet = function(walletKey, walletId) {
       address: addressString,
       amount: amtString,
       fee: feeString,
-      time: new Date().getTime()
+      time: new Date().getTime(),
+      message: 'Hello world'
     });
 
     // Remove unspent elements now that we have a tx that uses them.
