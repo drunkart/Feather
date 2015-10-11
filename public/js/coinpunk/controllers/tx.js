@@ -147,7 +147,7 @@ coinpunk.controllers.Tx.prototype.create = function() {
     } else {
       $.post('/api/tx/send', {tx: rawtx}, function(resp) {
         console.log(resp.hash)
-        console.log(resp.hash[0])
+        console.log(resp.hash[txid])
 
         if(resp.error) {
           coinpunk.wallet.revertTx();
