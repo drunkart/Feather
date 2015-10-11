@@ -365,6 +365,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
   };
 
   this.createSend = function(amtString, feeString, addressString, changeAddress) {
+    console.log("From createSend")
     var tx = this.createTx(amtString, feeString, addressString, changeAddress);
 
     this.transactions.push({
@@ -384,6 +385,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
     // to rollback the spend.
     this.lastUnspentsUsed = tx.unspentsUsed;
 
+    console.log(tx.raw)
     return tx.raw;
   };
 

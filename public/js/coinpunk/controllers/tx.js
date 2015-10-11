@@ -80,6 +80,7 @@ coinpunk.controllers.Tx.prototype.sendBTCUpdate = function() {
 };
 
 coinpunk.controllers.Tx.prototype.create = function() {
+  console.log("From create")
   var self = this;
   var sendButton = $('#sendButton');
   sendButton.addClass('disabled');
@@ -135,6 +136,7 @@ coinpunk.controllers.Tx.prototype.create = function() {
     changeAddress = coinpunk.wallet.createNewAddress('change', true);
 
   var rawtx = coinpunk.wallet.createSend(amount, calculatedFee, address, coinpunk.wallet.getChangeAddress());
+  console.log(rawtx)
 
   self.saveWallet({override: true, address: changeAddress}, function(response) {
     if(response.result == 'error' && response.messages[0] == 'Invalid session key') {
