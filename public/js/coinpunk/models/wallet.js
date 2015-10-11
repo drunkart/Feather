@@ -383,7 +383,6 @@ coinpunk.Wallet = function(walletKey, walletId) {
     // to rollback the spend.
     this.lastUnspentsUsed = tx.unspentsUsed;
 
-    console.log(tx.raw)
     return tx.raw;
   };
 
