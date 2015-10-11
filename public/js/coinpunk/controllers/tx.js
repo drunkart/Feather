@@ -136,7 +136,6 @@ coinpunk.controllers.Tx.prototype.create = function() {
     changeAddress = coinpunk.wallet.createNewAddress('change', true);
 
   var rawtx = coinpunk.wallet.createSend(amount, calculatedFee, address, coinpunk.wallet.getChangeAddress());
-  console.log(rawtx)
 
   self.saveWallet({override: true, address: changeAddress}, function(response) {
     if(response.result == 'error' && response.messages[0] == 'Invalid session key') {
@@ -147,6 +146,8 @@ coinpunk.controllers.Tx.prototype.create = function() {
       coinpunk.router.route('signout');
     } else {
       $.post('/api/tx/send', {tx: rawtx}, function(resp) {
+        console.log(resp)
+        console.log(resp.hash)
         if(resp.error) {
           coinpunk.wallet.revertTx();
 
@@ -168,7 +169,6 @@ coinpunk.controllers.Tx.prototype.create = function() {
           })
 
         } else {
-          console.log(resp)
           coinpunk.database.setSuccessMessage("Sent "+amount+" FTC to "+address+".");
 
           self.getUnspent(function() {
