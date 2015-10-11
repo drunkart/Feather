@@ -171,8 +171,8 @@ coinpunk.controllers.Tx.prototype.create = function() {
         }
         //if transaction has no error message
         else {
-          var data = JSON.parse(resp.hash),
-              data.message = "Hello world"
+          var data = JSON.parse(resp.hash)
+          data.message = "Hello world"
           self.saveTxComment({txid: data.txid, message: data.message}, function(error) {
               if(error) {
                   coinpunk.database.setSuccessMessage("Comment was not be saved. ");
