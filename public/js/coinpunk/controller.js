@@ -26,6 +26,26 @@ coinpunk.Controller.prototype.mergeUnspent = function(unspent, callback) {
     callback();
 };
 
+coinpunk.Controller.prototype.saveTxComment = function(data, callback) {
+    console.log("From saveTxComment")
+    console.log(data)
+    var self = this,
+        data = data || {}
+
+    $.ajax({
+        type: 'POST',
+        url: '/api/tx/saveSendMessage',
+        data: data,
+        dataType: 'json',
+        success: function(response) {
+            console.log(response)
+            if(response.error) {
+                return callback = response.error
+            }
+        }
+    })
+}
+
 coinpunk.Controller.prototype.saveWallet = function(data, callback) {
   var self = this;
   var data = data || {};

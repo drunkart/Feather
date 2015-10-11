@@ -147,6 +147,8 @@ coinpunk.controllers.Tx.prototype.create = function() {
     } else {
       $.post('/api/tx/send', {tx: rawtx}, function(resp) {
         console.log(resp.hash)
+        console.log(resp.hash[0])
+
         if(resp.error) {
           coinpunk.wallet.revertTx();
 
@@ -167,9 +169,16 @@ coinpunk.controllers.Tx.prototype.create = function() {
             sendButton.removeClass('disabled');
           })
 
-        } else {
+        }
+        //if transaction has no error message
+        else {
+          message = "Hello world"
+          /*self.saveTxComment({txid: txid, message: message}, function(error) {
+              if(error) {
+                  coinpunk.database.setSuccessMessage("Comment was not be saved. ");
+              }
+          });*/
           coinpunk.database.setSuccessMessage("Sent "+amount+" FTC to "+address+".");
-
           self.getUnspent(function() {
             coinpunk.router.route('dashboard');
           });
