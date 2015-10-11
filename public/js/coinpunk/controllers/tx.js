@@ -146,7 +146,6 @@ coinpunk.controllers.Tx.prototype.create = function() {
       coinpunk.router.route('signout');
     } else {
       $.post('/api/tx/send', {tx: rawtx}, function(resp) {
-        console.log(resp)
         console.log(resp.hash)
         if(resp.error) {
           coinpunk.wallet.revertTx();
