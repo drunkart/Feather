@@ -88,6 +88,7 @@ coinpunk.controllers.Tx.prototype.create = function() {
   var amount = $('#createSendForm #amount').val();
   var errors = [];
   var errorsDiv = $('#errors');
+  var comment = $('#message').val();
 
   this.calculateFee();
   var calculatedFee = $('#calculatedFee').val();
@@ -146,8 +147,6 @@ coinpunk.controllers.Tx.prototype.create = function() {
       coinpunk.router.route('signout');
     } else {
       $.post('/api/tx/send', {tx: rawtx}, function(resp) {
-        console.log(resp.hash)
-
         if(resp.error) {
           coinpunk.wallet.revertTx();
 
@@ -172,7 +171,8 @@ coinpunk.controllers.Tx.prototype.create = function() {
         //if transaction has no error message
         else {
           var data = JSON.parse(resp.hash)
-          data.message = "Hello world"
+          data.message = comment
+          console.log(data)
           self.saveTxComment({txid: data.txid, message: data.message}, function(error) {
               if(error) {
                   coinpunk.database.setSuccessMessage("Comment was not be saved. ");

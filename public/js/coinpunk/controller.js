@@ -27,8 +27,6 @@ coinpunk.Controller.prototype.mergeUnspent = function(unspent, callback) {
 };
 
 coinpunk.Controller.prototype.saveTxComment = function(data, callback) {
-    console.log("From saveTxComment")
-    console.log(data)
     var self = this,
         data = data || {}
 
