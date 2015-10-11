@@ -365,7 +365,6 @@ coinpunk.Wallet = function(walletKey, walletId) {
   };
 
   this.createSend = function(amtString, feeString, addressString, changeAddress) {
-    console.log("From createSend")
     var tx = this.createTx(amtString, feeString, addressString, changeAddress);
 
     this.transactions.push({
@@ -374,8 +373,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
       address: addressString,
       amount: amtString,
       fee: feeString,
-      time: new Date().getTime(),
-      message: 'Hello world'
+      time: new Date().getTime()
     });
 
     // Remove unspent elements now that we have a tx that uses them.

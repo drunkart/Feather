@@ -168,6 +168,7 @@ coinpunk.controllers.Tx.prototype.create = function() {
           })
 
         } else {
+          console.log(resp)
           coinpunk.database.setSuccessMessage("Sent "+amount+" FTC to "+address+".");
 
           self.getUnspent(function() {
