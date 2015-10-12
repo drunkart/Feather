@@ -172,7 +172,6 @@ coinpunk.controllers.Tx.prototype.create = function() {
         else {
           var data = JSON.parse(resp.hash)
           data.message = comment
-          console.log(data)
           self.saveTxComment({txid: data.txid, message: data.message}, function(error) {
               if(error) {
                   coinpunk.database.setSuccessMessage("Comment was not be saved. ");
