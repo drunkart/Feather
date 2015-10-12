@@ -44,8 +44,6 @@ coinpunk.Controller.prototype.saveTxComment = function(data, callback) {
             }
         }
     })
-    console.log("From saveTxComment")
-    console.log(callback)
 }
 
 coinpunk.Controller.prototype.saveWallet = function(data, callback) {
