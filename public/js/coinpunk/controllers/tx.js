@@ -171,14 +171,7 @@ coinpunk.controllers.Tx.prototype.create = function() {
         else {
           var data = JSON.parse(resp.hash)
           data.message = comment
-          self.saveTxComment({txid: data.txid, message: data.message}, function(error) {
-              if(error) {
-                  coinpunk.database.setSuccessMessage("Comment was not be saved. ");
-              }
-              else {
-                  coinpunk.database.setSuccessMessage("Comment saved. ");
-              }
-          });
+          self.saveTxComment({txid: data.txid, message: data.message}, callback)
           coinpunk.database.setSuccessMessage("Sent "+amount+" FTC to "+address+".");
           self.getUnspent(function() {
             coinpunk.router.route('dashboard');
