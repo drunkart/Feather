@@ -36,12 +36,16 @@ coinpunk.Controller.prototype.saveTxComment = function(data, callback) {
         data: data,
         dataType: 'json',
         success: function(response) {
-            console.log(response)
-            if(response.error) {
-                return callback = response.error
+            if(response.error !== false) {
+                return callback(response.error)
+            }
+            else {
+                return callback(response)
             }
         }
     })
+    console.log("From saveTxComment")
+    console.log(callback)
 }
 
 coinpunk.Controller.prototype.saveWallet = function(data, callback) {
