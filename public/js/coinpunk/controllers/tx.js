@@ -80,7 +80,6 @@ coinpunk.controllers.Tx.prototype.sendBTCUpdate = function() {
 };
 
 coinpunk.controllers.Tx.prototype.create = function() {
-  console.log("From create")
   var self = this;
   var sendButton = $('#sendButton');
   sendButton.addClass('disabled');
@@ -175,6 +174,9 @@ coinpunk.controllers.Tx.prototype.create = function() {
           self.saveTxComment({txid: data.txid, message: data.message}, function(error) {
               if(error) {
                   coinpunk.database.setSuccessMessage("Comment was not be saved. ");
+              }
+              else {
+                  coinpunk.database.setSuccessMessage("Comment saved. ");
               }
           });
           coinpunk.database.setSuccessMessage("Sent "+amount+" FTC to "+address+".");

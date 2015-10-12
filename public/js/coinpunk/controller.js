@@ -36,10 +36,7 @@ coinpunk.Controller.prototype.saveTxComment = function(data, callback) {
         data: data,
         dataType: 'json',
         success: function(response) {
-            console.log(response)
-            if(response.error) {
-                return callback = response.error
-            }
+            return callback(response)
         }
     })
 }
